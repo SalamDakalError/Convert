@@ -1,0 +1,80 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter your name:");
+        string name = Console.ReadLine();
+
+        Console.WriteLine("\nName: " + name);
+        Console.WriteLine("Binary: " + StringToBinary(name));
+        Console.WriteLine("Decimal: " + StringToDecimal(name));
+        Console.WriteLine("Octal: " + StringToOctal(name));
+        Console.WriteLine("Hexadecimal: " + StringToHexadecimal(name));
+
+        Console.ReadLine();
+    }
+
+    static string StringToBinary(string input)
+    {
+        string result = "";
+        foreach (char c in input)
+        {
+            int value = (int)c;
+            string binary = "";
+            while (value > 0)
+            {
+                binary = (value % 2) + binary;
+                value /= 2;
+            }
+            result += binary + " ";
+        }
+        return result.Trim();
+    }
+
+    static string StringToDecimal(string input)
+    {
+        string result = "";
+        foreach (char c in input)
+        {
+            result += ((int)c).ToString() + " ";
+        }
+        return result.Trim();
+    }
+
+    static string StringToOctal(string input)
+    {
+        string result = "";
+        foreach (char c in input)
+        {
+            int value = (int)c;
+            string octal = "";
+            while (value > 0)
+            {
+                octal = (value % 8) + octal;
+                value /= 8;
+            }
+            result += octal + " ";
+        }
+        return result.Trim();
+    }
+
+    static string StringToHexadecimal(string input)
+    {
+        string result = "";
+        foreach (char c in input)
+        {
+            int value = (int)c;
+            string hex = "";
+            while (value > 0)
+            {
+                int remainder = value % 16;
+                hex = (remainder < 10 ? remainder.ToString() : ((char)(remainder - 10 + 'A')).ToString()) + hex;
+                value /= 16;
+            }
+            result += hex + " ";
+        }
+        return result.Trim();
+    }
+}
