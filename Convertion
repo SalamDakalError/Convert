@@ -70,7 +70,38 @@ class Program
             while (value > 0)
             {
                 int remainder = value % 16;
-                hex = (remainder < 10 ? remainder.ToString() : ((char)(remainder - 10 + 'A')).ToString()) + hex;
+                string hexl;
+
+                if (remainder < 10)
+                {
+                    hexl = remainder.ToString();
+                }
+                else if (remainder == 10)
+                {
+                    hexl = "A";
+                }
+                else if (remainder == 11)
+                {
+                    hexl = "B";
+                }
+                else if (remainder == 12)
+                {
+                    hexl = "C";
+                }
+                else if (remainder == 13)
+                {
+                    hexl = "D";
+                }
+                else if (remainder == 14)
+                {
+                    hexl = "E";
+                }
+                else
+                {
+                    hexl = "F";
+                }
+
+                hex = hexl + hex;
                 value /= 16;
             }
             result += hex + " ";
